@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Niharika's Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('backimage.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    /* Overlay for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+    }
+
+    header {
+      background-color: rgba(44, 62, 80, 0.8);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    section {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ccc;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .project {
+      background: #f9f9f9;
+      border-left: 5px solid #3498db;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    footer {
+      background-color: rgba(44, 62, 80, 0.9);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: #3498db;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Niharika Namala</h1>
+    <nav>
+      <a href="#about">About</a> |
+      <a href="#projects">Projects</a> |
+      <a href="#skills">Skills</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <img src="C:\Users\namal\OneDrive\Desktop\mernstack\week 4\New Doc 07-08-2024 21.33_2.jpg" alt="Profile Photo" class="profile-photo" />
+        <div class="about-text">
+          <p>Hello! I am Niharika Namala, a passionate and detail-oriented web developer based in India. I specialize in building responsive, clean, and user-focused web applications. My primary focus is front-end development using modern technologies like HTML, CSS, JavaScript, and React.</p>
+          <p>I enjoy solving real-world problems through code and am always excited to take on new challenges that push my skills further. My goal is to become a full-stack developer and contribute to innovative tech products that improve lives.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <div class="project">
+        <h3>Fire Detection System</h3>
+        <p>Developed an intelligent fire detection system using Python and OpenCV. The system processes video frames in real-time and detects fire using color and contour analysis. Alerts can be integrated with IoT or security systems.</p>
+      </div>
+
+      <div class="project">
+        <h3>Plant Leaf Disease Detection</h3>
+        <p>Built a machine learning model using Python to identify plant leaf diseases from images. The system uses image preprocessing, feature extraction, and classification techniques like KNN or CNN to diagnose diseases accurately.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>Database Basics</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: namalaniharika@gmail.com</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/namala-niharika-a728b932a" target="_blank">linkedin.com/in/niharika</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Niharika Namala. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

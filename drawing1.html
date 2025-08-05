@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Childhood Rural Drawing</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="drawingCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("drawingCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drawScene();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawScene() {
+      const W = canvas.width;
+      const H = canvas.height;
+
+      // Sky
+      ctx.fillStyle = "#87CEEB";
+      ctx.fillRect(0, 0, W, H * 0.6);
+
+      // Grass
+      ctx.fillStyle = "#7CFC00";
+      ctx.fillRect(0, H * 0.6, W, H * 0.4);
+
+      // Sun
+      ctx.beginPath();
+      ctx.arc(W - 100, 100, 60, 0, Math.PI * 2);
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+
+      // Clouds
+      function drawCloud(x, y) {
+        ctx.fillStyle = "white";
+        ctx.beginPath();
+        ctx.arc(x, y, 30, 0, Math.PI * 2);
+        ctx.arc(x + 40, y, 30, 0, Math.PI * 2);
+        ctx.arc(x + 20, y - 20, 30, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      drawCloud(100, 100);
+      drawCloud(300, 70);
+      drawCloud(600, 120);
+
+      // Mountains
+      function drawMountain(x, y, width, height) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + width / 2, y - height);
+        ctx.lineTo(x + width, y);
+        ctx.closePath();
+        ctx.fillStyle = "#A9A9A9";
+        ctx.fill();
+      }
+      drawMountain(0, H * 0.6, 300, 200);
+      drawMountain(200, H * 0.6, 300, 250);
+      drawMountain(400, H * 0.6, 300, 180);
+
+      // River
+      ctx.fillStyle = "#1E90FF";
+      ctx.beginPath();
+      ctx.moveTo(0, H * 0.7);
+      ctx.bezierCurveTo(W * 0.3, H * 0.8, W * 0.6, H, W, H);
+      ctx.lineTo(W, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+      ctx.fill();
+
+      // Road
+      ctx.fillStyle = "#555";
+      ctx.beginPath();
+      ctx.moveTo(W * 0.4, H * 0.6);
+      ctx.lineTo(W * 0.45, H);
+      ctx.lineTo(W * 0.55, H);
+      ctx.lineTo(W * 0.5, H * 0.6);
+      ctx.closePath();
+      ctx.fill();
+
+      // Houses
+      function drawHouse(x, y, scale) {
+        ctx.fillStyle = "#FF6347";
+        ctx.fillRect(x, y, 100 * scale, 80 * scale);
+        ctx.fillStyle = "#654321";
+        ctx.fillRect(x + 35 * scale, y + 40 * scale, 30 * scale, 40 * scale);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 50 * scale, y - 40 * scale);
+        ctx.lineTo(x + 100 * scale, y);
+        ctx.closePath();
+        ctx.fillStyle = "#8B0000";
+        ctx.fill();
+      }
+
+      drawHouse(100, H * 0.55, 1);
+      drawHouse(250, H * 0.5, 0.9);
+      drawHouse(400, H * 0.52, 1);
+      drawHouse(600, H * 0.5, 1.1);
+
+      // Trees
+      function drawTree(x, y) {
+        ctx.fillStyle = "#8B4513";
+        ctx.fillRect(x, y, 20, 60);
+        ctx.beginPath();
+        ctx.arc(x + 10, y - 20, 30, 0, Math.PI * 2);
+        ctx.fillStyle = "green";
+        ctx.fill();
+      }
+
+      drawTree(180, H * 0.58);
+      drawTree(330, H * 0.56);
+      drawTree(500, H * 0.57);
+      drawTree(700, H * 0.55);
+
+      // Boat
+      ctx.fillStyle = "#8B4513";
+      ctx.beginPath();
+      ctx.moveTo(600, H * 0.9);
+      ctx.lineTo(650, H * 0.93);
+      ctx.lineTo(700, H * 0.9);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.strokeStyle = "#000";
+      ctx.beginPath();
+      ctx.moveTo(650, H * 0.9);
+      ctx.lineTo(650, H * 0.85);
+      ctx.stroke();
+
+      ctx.fillStyle = "#FF0";
+      ctx.beginPath();
+      ctx.moveTo(650, H * 0.85);
+      ctx.lineTo(670, H * 0.87);
+      ctx.lineTo(650, H * 0.89);
+      ctx.closePath();
+      ctx.fill();
+
+      // Birds
+      function drawBird(x, y) {
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 10, y - 10);
+        ctx.lineTo(x + 20, y);
+        ctx.stroke();
+      }
+      drawBird(100, 150);
+      drawBird(150, 160);
+      drawBird(200, 140);
+      drawBird(250, 130);
+
+      // Flowers
+      function drawFlower(x, y) {
+        ctx.fillStyle = "green";
+        ctx.fillRect(x + 4, y + 10, 2, 10);
+        ctx.fillStyle = "pink";
+        for (let i = 0; i < 5; i++) {
+          let angle = i * (Math.PI * 2 / 5);
+          ctx.beginPath();
+          ctx.arc(x + 5 + Math.cos(angle) * 5, y + 5 + Math.sin(angle) * 5, 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(x + 5, y + 5, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      for (let i = 0; i < 30; i++) {
+        let fx = Math.random() * W;
+        let fy = H * 0.6 + Math.random() * (H * 0.4 - 30);
+        drawFlower(fx, fy);
+      }
+    }
+  </script>
+</body>
+</html>
