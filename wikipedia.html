@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wikipedia Search</title>
+</head>
+<body>
+  <h1>Wikipedia Search</h1>
+
+  <p>Type a keyword to search Wikipedia:</p>
+
+  <input type="text" id="searchInput" placeholder="e.g., India, Sun, Computer">
+  <button onclick="searchWikipedia()">Search</button>
+
+  <hr>
+
+  <div id="result"></div>
+
+  <script>
+    function searchWikipedia() {
+      const query = document.getElementById('searchInput').value;
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = "Searching...";
+
+      fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Page not found.");
+          }
+          return response.json();
+        })
+        .then(data => {
+          resultDiv.innerHTML = `
+            <h2>${data.title}</h2>
+            <p>${data.extract}</p>
+            ${data.thumbnail ? `<img src="${data.thumbnail.source}" width="200">` : ""}
+            <p><a href="https://en.wikipedia.org/wiki/${data.title}" target="_blank">Read more on Wikipedia</a></p>
+          `;
+        })
+        .catch(error => {
+          resultDiv.innerHTML = `<p style="color:red;">No result found. Try a different keyword.</p>`;
+        });
+    }
+  </script>
+</body>
+</html>
